@@ -1,0 +1,22 @@
+{
+  "db":  {
+    "client": "mysql2",
+    "connection": {
+      "host": "db",
+      "user": "root",
+      "password": "root",
+      "database": "app_test"
+    },
+    "pool": {
+      "min": 0,
+      "max": 7
+    },
+    "migrations": {
+      "directory": "./priv/migrations"
+    },
+    "seeds": {
+      "directory": "./priv/seeds/test"
+    },
+    "useNullAsDefault": true
+  }
+}
