@@ -9,7 +9,8 @@
     "logs": "docker-compose logs -f --tail=10 web",
     "mysql": "docker-compose exec db mysql -h 127.0.0.1 -uroot -p",
     "test": "docker-compose run -e NODE_ENV=test --rm web ./node_modules/.bin/jasmine",
-    "start": "NODE_ENV=production node src/index.js"
+    "start": "NODE_ENV=production node src/index.js",
+    "debug": "docker-compose exec web sh -c 'NODE_PORT=4000 node --inspect=0.0.0.0:9229 ./src/index.js'"
   },
   "author": "",
   "license": "ISC",

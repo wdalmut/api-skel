@@ -4,6 +4,8 @@ services:
     build: .
     ports:
       - "3000:3000"
+      - "4000:4000"
+      - "9229:9229"
     command: ./node_modules/.bin/forever -w src/index.js
     volumes:
       - .:/data
