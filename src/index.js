@@ -1,15 +1,19 @@
 const cors = require('cors')
 const express = require('express')
-const morgan = require('morgan')
+const pino = require('express-pino-logger')({
+  name: process.env.APP_NAME,
+  base: {
+    region: process.env.AWS_REGION,
+    env: process.env.NODE_ENV,
+  },
+  enabled: !(process.env.NODE_ENV == 'test')
+})
 const config = require('config')
 const bodyParser = require('body-parser')
 const actions = require('./controllers')
 
 const app = express();
-
-[config.util.getEnv('NODE_ENV')]
-  .filter((env) => env !== 'test')
-  .map(() => app.use(morgan('combined')))
+app.use(pino)
 
 app.use(cors({
   exposedHeaders: ['x-page', 'x-count', 'x-total', 'x-limit', 'x-to', 'x-from']

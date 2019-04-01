@@ -24,10 +24,10 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-joi-validation": "^0.2.1",
+    "express-pino-logger": "^4.0.0",
     "install": "^0.10.4",
     "joi": "^13.2.0",
     "knex": "^0.15.2",
-    "morgan": "^1.9.0",
     "mysql2": "^1.6.1",
     "objection": "^1.2.2",
     "ramda": "^0.25.0"
