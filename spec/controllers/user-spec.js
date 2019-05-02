@@ -1,65 +1,60 @@
-const R = require('ramda');
-const request = require('supertest');
+/* global beforeEach describe it db_init expect */
+/* eslint no-undef: 'error' */
 
-const mock = require('mock-require');
+const R = require('ramda')
+const request = require('supertest')
 
-describe("User action", () => {
-  beforeEach(db_init);
+describe('User action', () => {
+  beforeEach(db_init)
 
-  // Mock external auth module
-  beforeEach(() => {
-    const user = {
-      id: 1,
-      username: "test-user@gmail.com",
-    };
-    mock('../../src/auth', {
-      from_basic: (username, password) => Promise.resolve(user),
-      from_token: (token) => Promise.resolve(user),
-    });
-  })
-
-  afterAll(mock.stopAll);
-
-  let app;
+  let app
 
   beforeEach((done) => {
-    app = require('../..');
-    done();
-  });
+    app = require('../..')
+    done()
+  })
 
-  it("should list users", (done) => {
+  it('should list users', (done) => {
     request(app)
       .get('/v1/user')
       .set('Authorization', 'Bearer test')
       .expect(200)
       .end((err, res) => {
+        if (err) {
+          throw err
+        }
+
         expect(R.map(R.pick(['username']), res.body)).toEqual([
-          {username: "wdalmut"},
-          {username: "gmittica"}
-        ]);
-        done();
+          { username: 'wdalmut' },
+          { username: 'gmittica' },
+        ])
+        done()
       })
   })
 
-  it("should get an user", (done) => {
+  it('should get an user', (done) => {
     request(app)
       .get('/v1/user/1')
       .set('Authorization', 'Bearer test')
       .expect(200)
       .end((err, res) => {
-        expect(R.pick(['username'], res.body)).toEqual({username: "wdalmut"});
-        done();
-      });
+        if (err) {
+          throw err
+        }
+
+        expect(R.pick(['username'], res.body)).toEqual({ username: 'wdalmut' })
+        done()
+      })
   })
 
-  it("should reply with 404 on missing user", (done) => {
+  it('should reply with 404 on missing user', (done) => {
     request(app)
       .get('/v1/user/571398')
       .set('Authorization', 'Bearer test')
       .expect(404, done)
   })
 
-  it("should create a new users", (done) => {
+  it('should create a new users', (done) => {
     request(app)
       .post('/v1/user')
       .set('Authorization', 'Bearer test')
@@ -68,14 +63,18 @@ describe("User action", () => {
       })
       .expect(200)
       .end((err, res) => {
-        expect(R.pick(['username'], res.body)).toEqual({username: "test@gmail.com"});
+        if (err) {
+          throw err
+        }
+
+        expect(R.pick(['username'], res.body)).toEqual({ username: 'test@gmail.com' })
         expect(R.not(R.isNil(res.body.created_at))).toBe(true)
         expect(R.isNil(res.body.updated_at)).toBe(true)
-        done();
-      });
+        done()
+      })
   })
 
-  it("should cannot create a users with an existing username", (done) => {
+  it('should cannot create a users with an existing username', (done) => {
     request(app)
       .post('/v1/user')
       .set('Authorization', 'Bearer test')
@@ -85,7 +84,7 @@ describe("User action", () => {
       .expect(409, done)
   })
 
-  it("should update users information", (done) => {
+  it('should update users information', (done) => {
     request(app)
       .patch('/v1/user/1')
       .set('Authorization', 'Bearer test')
@@ -94,16 +93,20 @@ describe("User action", () => {
       })
       .expect(200)
       .end((err, res) => {
+        if (err) {
+          throw err
+        }
+
         expect(R.pick(['username'], res.body)).toEqual({
-          username: "hello",
-        });
+          username: 'hello',
+        })
         expect(R.not(R.isNil(res.body.created_at))).toBe(true)
         expect(R.not(R.isNil(res.body.updated_at))).toBe(true)
-        done();
-      });
+        done()
+      })
   })
 
-  it("should cannot update users information on existing usernames", (done) => {
+  it('should cannot update users information on existing usernames', (done) => {
     request(app)
       .patch('/v1/user/1')
       .set('Authorization', 'Bearer test')
@@ -112,4 +115,4 @@ describe("User action", () => {
       })
       .expect(409, done)
   })
-});
+})

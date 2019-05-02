@@ -8,5 +8,5 @@ module.exports = {
   },
   many: (users) => {
     return R.map(R.pick(fields))(users)
-  }
+  },
 }
