@@ -20,17 +20,17 @@
     "@wdalmut/mini-auth": "0.0.2",
     "@wdalmut/one-of": "0.0.1",
     "@wdalmut/token-auth": "0.0.1",
-    "body-parser": "^1.18.2",
-    "config": "^1.30.0",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "body-parser": "^1.19.0",
+    "config": "^1.31.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
     "express-joi-validation": "^0.2.1",
     "express-pino-logger": "^4.0.0",
     "install": "^0.10.4",
-    "joi": "^13.2.0",
+    "joi": "^13.7.0",
     "knex": "^0.15.2",
-    "mysql2": "^1.6.1",
-    "objection": "^1.2.2",
+    "mysql2": "^1.6.5",
+    "objection": "^1.6.8",
     "ramda": "^0.25.0"
   },
   "devDependencies": {
@@ -40,9 +40,9 @@
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jasmine": "^3.1.0",
+    "jasmine": "^3.4.0",
     "mock-require": "^3.0.2",
-    "nodemon": "^1.18.9",
-    "supertest": "^3.0.0"
+    "nodemon": "^1.19.0",
+    "supertest": "^3.4.2"
   }
 }
