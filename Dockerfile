@@ -1,2 +1,2 @@
-FROM node:carbon
+FROM node:11
 
