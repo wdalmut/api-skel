@@ -28,10 +28,10 @@
     "express-pino-logger": "^4.0.0",
     "install": "^0.10.4",
     "joi": "^13.7.0",
-    "knex": "^0.15.2",
+    "knex": "^0.16.0",
     "mysql2": "^1.6.5",
     "objection": "^1.6.8",
-    "ramda": "^0.25.0"
+    "ramda": "^0.26.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
