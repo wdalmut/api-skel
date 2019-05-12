@@ -1,5 +1,7 @@
 const Joi = require('joi')
-const validator = require('express-joi-validation')({})
+const validator = require('express-joi-validation')({
+  passError: true,
+})
 
 exports.validate_user_input = validator.query({
 })

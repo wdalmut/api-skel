@@ -14,6 +14,9 @@
       "directory": "./priv/seeds/production"
     },
     "useNullAsDefault": true
+  },
+  "log": {
+    "enabled": false
   }
 }
 

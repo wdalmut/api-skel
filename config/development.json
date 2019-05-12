@@ -18,5 +18,13 @@
       "directory": "./priv/seeds/dev"
     },
     "useNullAsDefault": true
+  },
+  "log": {
+    "name": "app",
+    "base": {
+      "region": "local",
+      "env": "development"
+    },
+    "enabled": true
   }
 }

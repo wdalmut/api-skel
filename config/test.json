@@ -18,5 +18,13 @@
       "directory": "./priv/seeds/test"
     },
     "useNullAsDefault": true
+  },
+  "log": {
+    "name": "app",
+    "base": {
+      "region": "local",
+      "env": "test"
+    },
+    "enabled": false
   }
 }
