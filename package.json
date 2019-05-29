@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "serve": "docker-compose up -d",
-    "db": "docker-compose run -e NODE_ENV=${NODE_ENV, development} --rm web ./node_modules/.bin/knex",
+    "db": "docker-compose run -e NODE_ENV=${NODE_ENV:-development} --rm web ./node_modules/.bin/knex",
     "logs": "docker-compose logs -f --tail=10 web",
     "mysql": "docker-compose exec db mysql -h 127.0.0.1 -uroot -p",
     "test": "docker-compose run -e NODE_ENV=test --rm web ./node_modules/.bin/jasmine",
