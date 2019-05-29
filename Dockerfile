@@ -1,2 +1,2 @@
-FROM node:11
+FROM node:lts-alpine
 

@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000"
       - "9229:9229"
-    command: ./node_modules/.bin/nodemon -w src/index.js
+    command: ./node_modules/.bin/nodemon
     volumes:
       - .:/data
     working_dir: /data
