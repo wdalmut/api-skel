@@ -1,12 +1,8 @@
-const R = require('ramda')
+const {map, compose, pick} = require('ramda')
 
-const fields = ['id', 'username', 'created_at', 'updated_at']
+const fields = ['id', 'username', 'created_at', 'edited_at']
 
 module.exports = {
-  one: (user) => {
-    return R.pick(fields, user)
-  },
-  many: (users) => {
-    return R.map(R.pick(fields))(users)
-  },
+  one: pick(fields),
+  many: map(pick(fields)),
 }

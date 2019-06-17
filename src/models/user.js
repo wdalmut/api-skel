@@ -13,20 +13,6 @@ class User extends Model {
   static get idColumn () {
     return 'id'
   }
-
-  static get jsonSchema () {
-    return {
-      type: 'object',
-      required: ['username', 'created_at'],
-
-      properties: {
-        id: { type: 'integer' },
-        username: { type: 'string' },
-        created_at: { type: 'datetime' },
-        updated_at: { type: 'datetime' },
-      },
-    }
-  }
 }
 
 module.exports = User
