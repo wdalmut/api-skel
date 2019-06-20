@@ -5,9 +5,9 @@ const knex = require('knex')(config.db)
 
 Model.knex(knex)
 
-class User extends Model {
+class Product extends Model {
   static get tableName () {
-    return 'users'
+    return 'products'
   }
 
   static get idColumn () {
@@ -15,4 +15,4 @@ class User extends Model {
   }
 }
 
-module.exports = User
+module.exports = Product

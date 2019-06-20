@@ -1,5 +1,4 @@
 // add routes
 module.exports = [
-  ['/v1/user', require('./user')],
-  ['/v1/me', require('./me')],
+  ['/v1/product', require('./product')],
 ]

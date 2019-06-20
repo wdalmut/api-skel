@@ -17,3 +17,8 @@ const create_filters = curry((params, results) => {
     assoc('limit', parseInt(params.limit))
   )(results)
 })
+
+module.exports = {
+  append_headers,
+  create_filters,
+}

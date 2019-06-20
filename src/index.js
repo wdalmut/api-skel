@@ -4,7 +4,7 @@ const express = require('express')
 const pino = require('express-pino-logger')(config.log)
 const bodyParser = require('body-parser')
 const actions = require('./controllers')
-const error_handler = require('./controllers/error-handler')
+const error_handler = require('./middleware/error-handler')
 
 const app = express()
 app.use(pino)

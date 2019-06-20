@@ -4,7 +4,7 @@ services:
     build: .
     ports:
       - "3000:3000"
-      - "9229:9229"
+      # - "9229:9229"
     command: ./node_modules/.bin/nodemon
     volumes:
       - .:/data
@@ -12,7 +12,7 @@ services:
     environment:
       - NODE_ENV=development
   db:
-    image: mysql:5.6
+    image: mysql:5.7
     ports:
       - 3306
     environment:
