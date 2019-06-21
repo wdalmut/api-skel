@@ -12,11 +12,12 @@ module.exports = {
       .orderBy(params.orderBy, params.order)
       .where(omit(['limit', 'offset', 'orderBy', 'page', 'order'], params))
   },
-  get: (id) => {
+  get: (id, params = {}) => {
     const query = Product.query()
 
     query
       .where({ id })
+      .where(params)
       .first()
 
     return query.then(if_exists)

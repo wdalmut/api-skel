@@ -5,7 +5,8 @@
       "host": "db",
       "user": "root",
       "password": "root",
-      "database": "app_test"
+      "database": "app_test",
+      "decimalNumbers": true
     },
     "pool": {
       "min": 0,

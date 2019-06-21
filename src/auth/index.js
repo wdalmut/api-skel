@@ -1,18 +1,39 @@
-const {
-  bind,
-  ifElse,
-  equals,
-  always,
-} = require('ramda')
+const { compose, equals, path, assoc, prop } = require('ramda')
 
-const reject = bind(Promise.reject, Promise)
-const resolve = bind(Promise.resolve, Promise)
+const is_role_user = compose(equals('ROLE_USER'), path(['user', 'role']))
+const is_role_admin = compose(equals('ROLE_ADMIN'), path(['user', 'role']))
+
+const assoc_query_params_status_active = compose(assoc('status', 'ACTIVE'), prop('query'))
+const assoc_body_status_pending = compose(assoc('status', 'PENDING'), prop('body'))
+const assoc_body_status_active = compose(assoc('status', 'ACTIVE'), prop('body'))
+
+const if_user_set_status_query_params = (req, res, next) => {
+  // SE IL ROLE È ROLE_USER
+  if (is_role_user(req)) {
+    // ASSOCIA A STATUS ACTIVE
+    req.query = assoc_query_params_status_active(req)
+  }
+
+  next()
+}
+
+const if_user_set_status_body = (req, res, next) => {
+  // SE IL ROLE È ROLE_USER
+  if (is_role_user(req)) {
+    // ASSOCIA A STATUS PENDING
+    req.body = assoc_body_status_pending(req)
+  }
+  if (is_role_admin(req)) {
+    // ASSOCIA A STATUS PENDING
+    req.body = assoc_body_status_active(req)
+  }
+
+  next()
+}
 
 module.exports = {
-  from_basic: (username, password) => {
-    return ifElse(equals('waltertest'), always(resolve({ id: 1, username: 'walter' })), always(reject(null)))(username.concat(password))
-  },
-  from_token: (token) => {
-    return ifElse(equals('testtoken'), always(resolve({ id: 1, username: 'walter' })), always(reject(null)))(token)
-  },
+  is_role_user,
+  is_role_admin,
+  if_user_set_status_query_params,
+  if_user_set_status_body,
 }
