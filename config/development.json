@@ -5,8 +5,7 @@
       "host": "db",
       "user": "root",
       "password": "root",
-      "database": "app",
-      "decimalNumbers": true
+      "database": "app"
     },
     "pool": {
       "min": 0,
@@ -20,12 +19,15 @@
     },
     "useNullAsDefault": true
   },
+  "endpoints": {
+    "user": ""
+  },
   "log": {
     "name": "app",
     "base": {
-      "region": "local",
-      "env": "development"
+      "env": "dev"
     },
-    "enabled": true
+    "enabled": true,
+    "level": 20
   }
 }

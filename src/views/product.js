@@ -9,6 +9,8 @@ const cast_date_format = flip(format)('YYYY-MM-DD', __, { locale: itLocale })
 const cast_date_time_format = flip(format)('YYYY-MM-DD HH:mm:ss', __, { locale: itLocale })
 
 const trasformation = {
+  // attachments: stringify,
+  price: if_not_null_convert(parseFloat),
   available: if_not_null_convert(Boolean),
   exit_date: if_not_null_convert(cast_date_format),
   created_at: if_not_null_convert(cast_date_time_format),

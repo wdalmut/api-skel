@@ -1,7 +1,6 @@
-
 exports.up = (knex, Promise) =>
   knex.schema.alterTable('products', (t) => {
-    t.integer('price').alter()
+    t.decimal('price', 10, 8).alter()
   })
 
 exports.down = (knex, Promise) => {

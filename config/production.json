@@ -15,8 +15,7 @@
     },
     "useNullAsDefault": true
   },
-  "log": {
-    "enabled": false
-  }
+  "endpoints": {},
+  "log": {}
 }
 

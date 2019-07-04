@@ -41,6 +41,7 @@ describe('Product action', () => {
       .set('Authorization', 'Bearer user')
       .expect(200)
       .end((err, res) => {
+        // console.log(res.error, res.body)
         if (err) {
           throw err
         }
@@ -101,7 +102,7 @@ describe('Product action', () => {
     const body = {
       name: 'product 1',
       code: '23222',
-      price: 53.22,
+      price: 53.2245,
       exit_date: '2018-09-21',
       available: true,
     }
@@ -126,7 +127,7 @@ describe('Product action', () => {
     const body = {
       name: 'product 1',
       code: '23222',
-      price: 53.22,
+      price: 53.2245,
       exit_date: '2018-09-21',
       available: true,
     }
@@ -140,7 +141,7 @@ describe('Product action', () => {
         if (err) {
           throw err
         }
-        // console.log(res.body)
+        // console.log(res.body, res.error)
         expect(R.whereEq(body)(res.body)).toEqual(true)
         expect(res.body.status).toEqual('ACTIVE')
         expect(R.not(R.isNil(res.body.created_at))).toBe(true)
@@ -153,7 +154,7 @@ describe('Product action', () => {
     request(app)
       .post('/v1/product')
       .set('Authorization', 'Bearer admin')
-      .send({})
+      .send({ attachments: [{ name: 'ciao' }] })
       .expect(400)
       .end((err, res) => {
         if (err) {
@@ -162,7 +163,7 @@ describe('Product action', () => {
         // console.log(res.body, res.error)
 
         const requiredProprieties = R.compose(R.keys, R.pickBy(R.equals('is required')))
-        const expectedRequiredProprieties = ['name', 'code', 'price']
+        const expectedRequiredProprieties = ['name', 'code']
         expect(R.compose(R.isEmpty, R.symmetricDifference(expectedRequiredProprieties), requiredProprieties, R.prop('details'))(res.body)).toEqual(true)
         done()
       })
@@ -202,7 +203,7 @@ describe('Product action', () => {
         if (err) {
           throw err
         }
-
+        // console.log(res.error, res.body)
         expect(R.whereEq(body)(res.body)).toEqual(true)
         expect(R.equals(res.body.id, id)).toBe(true)
         expect(R.not(R.isNil(res.body.created_at))).toBe(true)
@@ -255,6 +256,7 @@ describe('Product action', () => {
         if (err) {
           throw err
         }
+        // console.log(res.error, res.body)
         const requiredProprieties = R.compose(R.keys, R.pickBy(R.equals('is not allowed')))
         const expectedRequiredProprieties = ['status']
         expect(R.compose(R.isEmpty, R.symmetricDifference(expectedRequiredProprieties), requiredProprieties, R.prop('details'))(res.body)).toEqual(true)

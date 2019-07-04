@@ -5,8 +5,7 @@
       "host": "db",
       "user": "root",
       "password": "root",
-      "database": "app_test",
-      "decimalNumbers": true
+      "database": "app_test"
     },
     "pool": {
       "min": 0,
@@ -19,6 +18,9 @@
       "directory": "./priv/seeds/test"
     },
     "useNullAsDefault": true
+  },
+  "endpoints": {
+    "user": ""
   },
   "log": {
     "name": "app",
