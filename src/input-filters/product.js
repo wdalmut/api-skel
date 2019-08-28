@@ -3,6 +3,7 @@ const validator = require('express-joi-validation').createValidator({
   passError: true,
 })
 const disable_convert = { joi: { convert: false, abortEarly: false } }
+
 exports.validate_products_input = validator.query({
   limit: Joi.number().integer().min(1).max(1000),
   page: Joi.number().integer().min(0).max(25),
@@ -13,7 +14,7 @@ exports.validate_products_input = validator.query({
   exit_date: Joi.date(),
   status: Joi.string().valid(['ACTIVE', 'PENDING']),
   available: Joi.boolean(),
-}, disable_convert)
+}, { joi: { abortEarly: false } })
 
 exports.validate_create_product_input = validator.body({
   name: Joi.string().min(1).required(),

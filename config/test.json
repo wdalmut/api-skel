@@ -25,9 +25,9 @@
   "log": {
     "name": "app",
     "base": {
-      "region": "local",
       "env": "test"
     },
-    "enabled": false
+    "enabled": false,
+    "level": 30
   }
 }
