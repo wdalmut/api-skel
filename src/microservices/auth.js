@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 const request = require('request')
 const config = require('config')
 
@@ -11,7 +12,7 @@ module.exports = (token) => new Promise((resolve, reject) => {
     },
   }, (err, response) => {
     if (err || response.statusCode >= 400) {
-      return reject(err || response.body)
+      return reject({ message: response.body, status: response.statusCode })
     }
 
     return resolve(response.body)

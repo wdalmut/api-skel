@@ -154,7 +154,7 @@ describe('Product action', () => {
     request(app)
       .post('/v1/product')
       .set('Authorization', 'Bearer admin')
-      .send({ attachments: [{ name: 'ciao' }] })
+      .send({})
       .expect(400)
       .end((err, res) => {
         if (err) {
