@@ -16,7 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/joi": "^15.1.0",
+    "@hapi/joi": "^16.0.0",
     "@wdalmut/basic-auth": "0.0.1",
     "@wdalmut/mini-auth": "0.0.2",
     "@wdalmut/one-of": "0.0.1",
@@ -26,7 +26,7 @@
     "cors": "^2.8.5",
     "date-fns": "^1.30.1",
     "express": "^4.16.4",
-    "express-joi-validation": "^2.0.0",
+    "express-joi-validation": "^4.0.0",
     "express-pino-logger": "^4.0.0",
     "install": "^0.10.4",
     "knex": "^0.19.5",
