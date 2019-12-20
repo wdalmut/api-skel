@@ -1,0 +1,21 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+
+RUN chown -R node:node /app
+
+USER node
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+
+RUN npm i --production
+
+COPY knexfile.js knexfile.js
+
+COPY config config
+COPY priv priv
+COPY spec spec
+COPY src src
+
+CMD ["node", "src/index.js"]
